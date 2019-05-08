@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.0.0-beta.6)
+  - Nimble (6.0.1)
+  - Quick (2.1.0)
+  - SnapKit (4.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.5)
+  - Nimble (~> 6.0.0)
+  - Quick
+  - SnapKit (~> 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Nimble
+    - Quick
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+
+PODFILE CHECKSUM: b08436ca41ca62e1fb3edddb276fc3ff5c9dfd88
+
+COCOAPODS: 1.6.1
