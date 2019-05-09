@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol RootAssembly {
-    associatedtype View
+    associatedtype View: UIView
     associatedtype Model
     
     func view(model: Model) -> View

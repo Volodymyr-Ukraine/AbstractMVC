@@ -11,10 +11,12 @@ import UIKit
 public class RootViewController <Model, View, Assembly>: UIViewController, RootViewGettable
     where
     Model: LibMVC.RootModel,
-    Assembly == Model.Assembly,
+    View: UIView,
+    Assembly: LibMVC.RootAssembly,
+    Model.Assembly == Assembly,
     Assembly.Model == Model.Presentation
 {
-    public typealias RootViewType = Model.Assembly.View
+    
     
     // Mark: -
     // Mark: Subtypes
@@ -28,6 +30,20 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     public var assembly: Model.Assembly {
         return self.model.assembly
     }
+    public override var viewIfLoaded: UIView? {
+            return self.view
+    }
+    /*public override var viewIfLoaded: UIView? {
+        get {
+            return self.view
+        }
+    }
+    var rootView: RootViewType? {
+        get
+            {
+                return nil
+            }
+    } // */
     
     // MARK: -
     // MARK: Init and Deinit
@@ -47,13 +63,16 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     // MARK: View Lifecycle
     
     open override func loadView() {
-        self.rootView = self.assembly.view(model: self.model.presentation)
+        self.view = self.assembly.view(model: self.model.presentation)
     }
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.configure()
     }
+    
+    
+    
     
     // MARK: -
     // MARK: Config
