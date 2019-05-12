@@ -33,17 +33,6 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     public override var viewIfLoaded: UIView? {
             return self.view
     }
-    /*public override var viewIfLoaded: UIView? {
-        get {
-            return self.view
-        }
-    }
-    var rootView: RootViewType? {
-        get
-            {
-                return nil
-            }
-    } // */
     
     // MARK: -
     // MARK: Init and Deinit

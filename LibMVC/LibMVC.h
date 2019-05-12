@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SnapKit>
 
 //! Project version number for LibMVC.
 FOUNDATION_EXPORT double LibMVCVersionNumber;
