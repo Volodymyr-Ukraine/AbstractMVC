@@ -11,6 +11,7 @@ pod 'Nimble', '~> 6.0.0'
 pod 'Quick'
 pod 'SnapKit', '~> 4.0.0'
 
+end
 
   target 'LibMVCTests' do
     inherit! :search_paths
@@ -20,7 +21,7 @@ pod 'Nimble', '~> 6.0.0'
 pod 'Quick'
 pod 'SnapKit', '~> 4.0.0'
 
-  end
+
 
 end
 
@@ -37,6 +38,12 @@ pod 'SnapKit', '~> 4.0.0'
   target 'mvcTests' do
     inherit! :search_paths
     # Pods for testing
+
+pod 'Alamofire', '~> 5.0.0-beta.5'
+pod 'Nimble', '~> 6.0.0'
+pod 'Quick'
+pod 'SnapKit', '~> 4.0.0'
+
   end
 
 end

@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+public class LoginViewController: RootViewController <LoginModel, LoginView, Assembly> {
+    
+}
