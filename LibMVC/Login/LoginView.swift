@@ -6,23 +6,82 @@
 //  Copyright © 2019 Volodymyr. All rights reserved.
 //
 
-import Foundation
-import SnapKit
+import UIKit
+// import SnapKit
+import LibMVC
+import Styles
 
 public protocol LoginPresentationModel {
     var userNamePlaceholder: String? {get}
     var userPasswordPlaceholder: String? {get}
+    
+    func textFieldAdapter(textField: UITextField) -> TextFieldAdapter
+    
+    func applyStyle(view: LoginView)
+    func applyLoyaut(view: LoginView)
 }
 
-public class LoginView: RootView<LoginPresentationModel> {
+public protocol LoginView {
+    var eventHandler: EventHandler<LoginViewEvent>? { get }
+    
+    var inLoading: Bool {get set}
+    func setLoading(_ loading: Bool, animated: Bool)
+}
+
+public enum LoginViewEvent{
+    case username(String?)
+    case userpassword(String?)
+    case login
+    case register
+}
+
+
+public class LoginViewImpl: RootView<LoginPresentationModel>, LoginView {
+    
     // MARK: -
     // MARK: Properties
     
-    public let userName: UITextField = UITextField()
-    public let userPassword: UITextField = UITextField()
+    public let userNameTextField: UITextField = UITextField()
+    public let userPasswordTextField: UITextField = UITextField()
+    
+    public let loginButton: UIButton = UIButton()
+    public let registerButton: UIButton = UIButton()
+    
+    public var eventHandler: EventHandler<LoginViewEvent>?
+    
+    private let usernameAdapter: TextFieldAdapter
+    private let passwordAdapter: TextFieldAdapter
     
     open override var content: [UIView] {
-        return super.content + [self.userName, self.userPassword]
+        var array = super.content
+        array.append(contentsOf: self.textFields)
+        return array
+        //return super.content + self.textFields
+    }
+    
+    public var textFields: [UITextField] {
+        return [self.userNameTextField, self.userPasswordTextField]
+    }
+    
+    public var inLoading: Bool = true // temporary value
+    public func setLoading(_ loading: Bool, animated: Bool) {
+        
+    }
+    
+    // MARK: -
+    // MARK:Init and Deinit
+    
+    public override init(model: LoginPresentationModel) {
+        self.usernameAdapter = model.textFieldAdapter(textField: self.userNameTextField)
+        self.passwordAdapter = model.textFieldAdapter(textField: self.userPasswordTextField)
+        
+        super.init(model: model)
+        
+        
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("Init(coder:) has not been implemented")
     }
     
     // MARK: -
@@ -30,18 +89,89 @@ public class LoginView: RootView<LoginPresentationModel> {
     
     open override func configureDesign() {
         super.configureDesign()
+        
+        nameFormTextField(self.userNameTextField)
+        passwordFormTextField(self.userPasswordTextField)
+        
     }
+    
+
+    
+
+    open override func configureBindings() {
+        super.configureBindings()
+        
+        self.bindButtons()
+        self.bindAdapters()
+    }
+    
     open override func configureLayouts() {
         super.configureLayouts()
+    }
+    
+    // MARK: -
+    // MARK: Actions
+    
+    @objc func didPressButton(_ sender: UIButton) {
+        let handler = self.eventHandler
+        switch sender {
+            case self.loginButton: handler?(.login)
+            case self.registerButton: handler?(.register)
+        default: break
+        }
     }
     
     open override func fill(from model: LoginPresentationModel) {
         super.fill(from: model)
         
-        self.userName.placeholder = model.userNamePlaceholder
-        self.userPassword.placeholder = model.userPasswordPlaceholder
+        self.userNameTextField.placeholder = model.userNamePlaceholder
+        self.userPasswordTextField.placeholder = model.userPasswordPlaceholder
+        
+        model.applyStyle(view: self)
+        model.applyLoyaut(view: self)
     }
     
+    // MARK: -
+    // MARK: Private
+    
+    private func bindButtons() {
+        [self.loginButton, self.registerButton].forEach{
+            $0.addTarget(
+                self,
+                action: #selector(didPressButton),
+                for: .touchUpInside
+            )
+        }
+    }
+    
+    private func bindAdapters() {
+        weak var weakSelf = self
+        
+        
+        self.usernameAdapter.eventHandler = self.sendStringEvent(
+                factory: LoginViewEvent.username,
+                onReturn: { weakSelf?.userPasswordTextField.becomeFirstResponder() }
+            )
+            /*switch $0 {
+            case let .text(string): weakSelf?.eventHandler?(.username(string))
+            case .returnKey: weakSelf?.userPasswordTextField.becomeFirstResponder()
+            } // */
+        
+        
+        self.passwordAdapter.eventHandler = self.sendStringEvent(
+                factory: LoginViewEvent.userpassword,
+                onReturn: { weakSelf?.userPasswordTextField.resignFirstResponder() }
+            )
+    }
+    
+    private func sendStringEvent (factory: @escaping (String?) -> LoginViewEvent, onReturn: @escaping ()->()) -> (TextFieldEvent)->() {
+        return { [weak self] in
+            switch $0 {
+            case let .text(string): self?.eventHandler?(factory(string))
+            case .returnKey: onReturn()
+            }
+        }
+    }
     
     
 }

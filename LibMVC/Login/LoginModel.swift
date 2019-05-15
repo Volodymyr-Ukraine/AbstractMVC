@@ -6,8 +6,8 @@
 //  Copyright © 2019 Volodymyr. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public protocol LoginModel: RootModel {
+//public protocol LoginModel: RootModel {
     
-}
+//}

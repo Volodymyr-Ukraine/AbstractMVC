@@ -6,8 +6,8 @@
 //  Copyright © 2019 Volodymyr. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public class LoginViewController: RootViewController <LoginModel, LoginView, Assembly> {
+//public class LoginViewController: RootViewController <LoginModel, LoginView, LoginAssembly> {
     
-}
+

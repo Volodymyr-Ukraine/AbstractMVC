@@ -8,7 +8,9 @@
 
 import UIKit
 
-public class RootView<Model>: UIView {
+public typealias EventHandler<Event> = (Event)->()
+
+open class RootView<Model>: UIView {
     
     // MARK: -
     // MARK: Properties

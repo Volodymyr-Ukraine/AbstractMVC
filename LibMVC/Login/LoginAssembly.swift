@@ -6,8 +6,8 @@
 //  Copyright © 2019 Volodymyr. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public protocol LoginAssembly: RootAssembly{
+//public protocol LoginAssembly: RootAssembly{
     
-}
+//}
