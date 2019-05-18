@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Optional {
-    public func `do` (_ action: (Wrapped) -> ()) {
+    func `do` (_ action: (Wrapped) -> ()) {
         self.map(action)
     }
 }

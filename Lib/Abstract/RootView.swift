@@ -10,6 +10,11 @@ import UIKit
 
 public typealias EventHandler<Event> = (Event)->()
 
+public protocol View: AnyObject {
+    associatedtype Model
+    
+}
+
 open class RootView<Model>: UIView {
     
     // MARK: -

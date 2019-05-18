@@ -52,7 +52,7 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     // MARK: View Lifecycle
     
     open override func loadView() {
-        self.view = self.assembly.view(model: self.model.presentation)
+        self.view = self.assembly.view(model: self.model.presentation) 
     }
     
     open override func viewDidLoad() {

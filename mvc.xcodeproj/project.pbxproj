@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F5609BE9228BFF6A0010E86E /* TextFieldAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5609BE8228BFF6A0010E86E /* TextFieldAdapter.swift */; };
+		F5609E0E228FF8380010E86E /* LoginControlerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5609E0D228FF8370010E86E /* LoginControlerModel.swift */; };
+		F5609E11228FFAEA0010E86E /* LoginPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5609E0F228FFAE60010E86E /* LoginPresentationModel.swift */; };
+		F5609E14228FFE1F0010E86E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5609E13228FFE1F0010E86E /* Strings.swift */; };
 		F56B5BE8228A165C00A1A480 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE52DD22880EFB00610AE1 /* LoginViewController.swift */; };
 		F56B5BE9228A165C00A1A480 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE52DB22880EE900610AE1 /* LoginModel.swift */; };
 		F56B5BEA228A165C00A1A480 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE52DF22880F0D00610AE1 /* LoginAssembly.swift */; };
@@ -18,9 +21,6 @@
 		F56B5C06228B0B7300A1A480 /* Styles.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F56B5BF0228B0B7200A1A480 /* Styles.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F56B5C0F228B0B9B00A1A480 /* Styles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56B5BF0228B0B7200A1A480 /* Styles.framework */; };
 		F56B5C11228B0BC200A1A480 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56B5C10228B0BC200A1A480 /* Style.swift */; };
-		F56B5C15228B423000A1A480 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE52DD22880EFB00610AE1 /* LoginViewController.swift */; };
-		F56B5C16228B423000A1A480 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE52DB22880EE900610AE1 /* LoginModel.swift */; };
-		F56B5C17228B423000A1A480 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE52DF22880F0D00610AE1 /* LoginAssembly.swift */; };
 		F586C5A02282027100EBA874 /* LibMVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F586C5972282027000EBA874 /* LibMVC.framework */; };
 		F586C5A72282027100EBA874 /* LibMVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586C5A62282027100EBA874 /* LibMVCTests.swift */; };
 		F586C5A92282027100EBA874 /* LibMVC.h in Headers */ = {isa = PBXBuildFile; fileRef = F586C5992282027000EBA874 /* LibMVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -121,6 +121,9 @@
 
 /* Begin PBXFileReference section */
 		F5609BE8228BFF6A0010E86E /* TextFieldAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAdapter.swift; sourceTree = "<group>"; };
+		F5609E0D228FF8370010E86E /* LoginControlerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControlerModel.swift; sourceTree = "<group>"; };
+		F5609E0F228FFAE60010E86E /* LoginPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresentationModel.swift; sourceTree = "<group>"; };
+		F5609E13228FFE1F0010E86E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		F56B5BF0228B0B7200A1A480 /* Styles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Styles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56B5BF2228B0B7200A1A480 /* Styles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Styles.h; sourceTree = "<group>"; };
 		F56B5BF3228B0B7200A1A480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,7 +150,7 @@
 		F5C5513D227EB76300CC7EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5C5513F227EB76300CC7EF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F5C55142227EB76300CC7EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F5C55144227EB76800CC7EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5C55144227EB76800CC7EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		F5C55147227EB76900CC7EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5C55149227EB76900CC7EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C5514E227EB76900CC7EF6 /* mvcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mvcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +225,16 @@
 				F5609BE8228BFF6A0010E86E /* TextFieldAdapter.swift */,
 			);
 			path = Adapters;
+			sourceTree = "<group>";
+		};
+		F5609E12228FFDE30010E86E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F5C55141227EB76300CC7EF6 /* Main.storyboard */,
+				F5C55144227EB76800CC7EF6 /* Assets.xcassets */,
+				F5609E13228FFE1F0010E86E /* Strings.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F56B5BF1228B0B7200A1A480 /* Styles */ = {
@@ -307,8 +320,10 @@
 			isa = PBXGroup;
 			children = (
 				F5BE52D922880EDB00610AE1 /* LoginView.swift */,
+				F5609E0F228FFAE60010E86E /* LoginPresentationModel.swift */,
 				F5BE52DD22880EFB00610AE1 /* LoginViewController.swift */,
 				F5BE52DB22880EE900610AE1 /* LoginModel.swift */,
+				F5609E0D228FF8370010E86E /* LoginControlerModel.swift */,
 				F5BE52DF22880F0D00610AE1 /* LoginAssembly.swift */,
 			);
 			path = Login;
@@ -347,8 +362,7 @@
 			children = (
 				F5C5513D227EB76300CC7EF6 /* AppDelegate.swift */,
 				F5C5513F227EB76300CC7EF6 /* ViewController.swift */,
-				F5C55141227EB76300CC7EF6 /* Main.storyboard */,
-				F5C55144227EB76800CC7EF6 /* Assets.xcassets */,
+				F5609E12228FFDE30010E86E /* Resources */,
 				F5BE52EB2288776A00610AE1 /* Podfile */,
 				F5C55146227EB76900CC7EF6 /* LaunchScreen.storyboard */,
 				F5C55149227EB76900CC7EF6 /* Info.plist */,
@@ -659,17 +673,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56B5C15228B423000A1A480 /* LoginViewController.swift in Sources */,
 				F5BE52CD22834EF600610AE1 /* RootView.swift in Sources */,
 				F5BE52D32283561600610AE1 /* RootViewGettable.swift in Sources */,
 				F5BE52CC22834EF300610AE1 /* RootModel.swift in Sources */,
 				F5609BE9228BFF6A0010E86E /* TextFieldAdapter.swift in Sources */,
 				F5BE52CB22834EEF00610AE1 /* RootViewController.swift in Sources */,
-				F56B5C16228B423000A1A480 /* LoginModel.swift in Sources */,
 				F5BE52CF228352DF00610AE1 /* RootAssembly.swift in Sources */,
 				F5BE52D622835D5F00610AE1 /* Optionals.swift in Sources */,
 				F5BE52CA22834DFB00610AE1 /* Functions.swift in Sources */,
-				F56B5C17228B423000A1A480 /* LoginAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,9 +697,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F56B5BE9228A165C00A1A480 /* LoginModel.swift in Sources */,
+				F5609E14228FFE1F0010E86E /* Strings.swift in Sources */,
 				F56B5BEA228A165C00A1A480 /* LoginAssembly.swift in Sources */,
+				F5609E0E228FF8380010E86E /* LoginControlerModel.swift in Sources */,
 				F56B5BE8228A165C00A1A480 /* LoginViewController.swift in Sources */,
 				F5DBF66C2288CA3300EB2F12 /* LoginView.swift in Sources */,
+				F5609E11228FFAEA0010E86E /* LoginPresentationModel.swift in Sources */,
 				F5C55140227EB76300CC7EF6 /* ViewController.swift in Sources */,
 				F5C5513E227EB76300CC7EF6 /* AppDelegate.swift in Sources */,
 			);

@@ -11,18 +11,21 @@ import UIKit
 import LibMVC
 import Styles
 
-public protocol LoginPresentationModel {
-    var userNamePlaceholder: String? {get}
-    var userPasswordPlaceholder: String? {get}
-    
-    func textFieldAdapter(textField: UITextField) -> TextFieldAdapter
-    
-    func applyStyle(view: LoginView)
-    func applyLoyaut(view: LoginView)
+public enum LoginPresentationModelEvent {
+    case didChange
 }
 
-public protocol LoginView {
-    var eventHandler: EventHandler<LoginViewEvent>? { get }
+
+
+public protocol LoginViewSubviews {
+    var userNameTextField: UITextField {get}
+    var userPasswordTextField: UITextField {get}
+    var loginButton: UIButton {get}
+    var registerButton: UIButton {get}
+}
+
+public protocol LoginView: RootView<LoginPresentationModel> {
+    var eventHandler: EventHandler<LoginViewEvent>? { get set}
     
     var inLoading: Bool {get set}
     func setLoading(_ loading: Bool, animated: Bool)
@@ -36,7 +39,7 @@ public enum LoginViewEvent{
 }
 
 
-public class LoginViewImpl: RootView<LoginPresentationModel>, LoginView {
+public class LoginViewImpl: RootView<LoginPresentationModel>, LoginView, LoginViewSubviews {
     
     // MARK: -
     // MARK: Properties
@@ -124,9 +127,18 @@ public class LoginViewImpl: RootView<LoginPresentationModel>, LoginView {
     open override func fill(from model: LoginPresentationModel) {
         super.fill(from: model)
         
-        self.userNameTextField.placeholder = model.userNamePlaceholder
-        self.userPasswordTextField.placeholder = model.userPasswordPlaceholder
         
+        model.eventHandler = {[weak self] model in
+            LibMVC.setup(self?.userNameTextField) {
+                $0.placeholder = model.userNamePlaceholder
+                $0.text = model.username
+            }
+            
+            LibMVC.setup(self?.userPasswordTextField) {
+                $0.placeholder = model.userPasswordPlaceholder
+                $0.text = model.password
+            }
+        }
         model.applyStyle(view: self)
         model.applyLoyaut(view: self)
     }

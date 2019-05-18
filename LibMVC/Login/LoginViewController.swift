@@ -7,7 +7,11 @@
 //
 
 import UIKit
-
+import LibMVC
 //public class LoginViewController: RootViewController <LoginModel, LoginView, LoginAssembly> {
     
 
+public class LoginViewController: RootViewController <LoginModel, LoginViewImpl, LoginAssembly> {
+    
+    
+}

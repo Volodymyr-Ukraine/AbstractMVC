@@ -7,7 +7,15 @@
 //
 
 import UIKit
+import LibMVC
 
-//public protocol LoginAssembly: RootAssembly{
+public struct LoginAssembly: RootAssembly{
+   
+    public typealias View = LoginViewImpl
     
-//}
+    public typealias Model = LoginPresentationModel
+    
+    public func view(model: Model) -> View {
+        return LoginViewImpl(model: model)
+    }
+}
