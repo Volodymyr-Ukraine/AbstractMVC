@@ -11,10 +11,12 @@ import UIKit
 public class RootViewController <Model, View, Assembly>: UIViewController, RootViewGettable
     where
     Model: LibMVC.RootModel,
-    View: UIView,
-    Assembly: LibMVC.RootAssembly,
-    Model.Assembly == Assembly,
-    Assembly.Model == Model.Presentation
+    Assembly: LibMVC.RootAssembly, // ??? без нього відео працює
+    Assembly == Model.Assembly,
+    Assembly.Model == Model.Presentation,
+    Assembly.View.Model == Model.Presentation
+
+    
 {
     
     
@@ -52,7 +54,7 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     // MARK: View Lifecycle
     
     open override func loadView() {
-        self.view = self.assembly.view(model: self.model.presentation) 
+        self.view = self.assembly.view(model: self.model.presentation).view
     }
     
     open override func viewDidLoad() {

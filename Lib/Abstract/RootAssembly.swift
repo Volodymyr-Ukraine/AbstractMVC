@@ -10,7 +10,7 @@ import UIKit
 
 public protocol RootAssembly {
     associatedtype Model
-    associatedtype View: UIView//RootView<Model>
+    associatedtype View: LibMVC.View//UIView//RootView<Model>
     
     
     func view(model: Model) -> View
