@@ -10,45 +10,52 @@ import UIKit
 import LibMVC
 import Styles
 
-public class LoginModel: RootModel, LoginPresentationModel { // при необхідності можна розділити цю модель на чисту модель та модель представлення (поки через мале наповнення їх злито докупи
+public class LoginModel: RootModel { // при необхідності можна зліпити з LoginPresentationModelImpl 
     public typealias Controler = LoginModel
     
     public typealias Presentation = LoginPresentationModel
     
     public typealias Assembly = LoginAssembly
     
+    public var username: String?
+    public var password: String?
     
     // MARK: -
     // MARK: Properties
     
     public var controler: LoginModel {
-    return self}
+        return self}
     
-    public var presentation : LoginPresentationModel {
-        return self
-    }
+    public let presentation : LoginPresentationModel
+    
     public let assembly = LoginAssembly()
     
-    public let userNamePlaceholder: String?  = Strings.email.uppercased
-    public let userPasswordPlaceholder: String? = Strings.password.uppercased
+   
+    // MARK: -
+    // MARK: Init and Deinit
     
-    public var username: String? {
-        return nil
+    public init (user: User) {
+        self.username = user.email
+        self.password = user.password
+        self.presentation = LoginPresentationModelImpl(user: user)
     }
-    public var password: String? {
-        return nil
-    }
-    
-    public let style: Style<LoginViewSubviews> = {_ in }
-    public let layout: Style<LoginViewSubviews> = {_ in }
-    
-    
-    public var eventHandler: EventHandler<LoginPresentationModel>?
     
     // MARK: -
     // MARK: Public
     
-    public func textFieldAdapter(textField: UITextField) -> TextFieldAdapter {
-        return TextFieldAdapter(textField)
+    public func update(completion: ((User?, Bool)-> Void)) {
+       self.username
+            .flatMap{ username in
+                self.password.flatMap {
+                    self.assembly.user(username: username, password: $0)
+                }
+            }
+            .do {
+                completion($0, true)
+            }
+         // звертання на сервіси, обробка даних, звертання кудись ще
     }
+
 }
+
+

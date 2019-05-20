@@ -10,17 +10,6 @@ import UIKit
 
 public typealias EventHandler<Event> = (Event)->()
 
-public protocol View: AnyObject {
-    associatedtype Model
-    
-    var model: Model { get }
-    var view: UIView { get }
-}
-
-extension View where Self: UIView {
-    public var view: UIView {
-    return self}
-}
 
 open class RootView<Model>: UIView, View {
     

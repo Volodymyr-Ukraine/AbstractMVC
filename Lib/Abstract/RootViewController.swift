@@ -54,7 +54,7 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     // MARK: View Lifecycle
     
     open override func loadView() {
-        self.view = self.assembly.view(model: self.model.presentation).view
+        self.view = self.assembly.view(model: self.model.presentation).view 
     }
     
     open override func viewDidLoad() {
@@ -69,7 +69,7 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     // MARK: Config
     
     open func configure() {
-        self.rootView.do(self.cofigureBindings)
+        self.rootView.do(self.configureBindings)
         self.configure(model: self.model.controler)
     }
     
@@ -78,7 +78,7 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     }
     
     
-    open func cofigureBindings(view: RootViewType) {
+    open func configureBindings(view: RootViewType) {
         
     }
     

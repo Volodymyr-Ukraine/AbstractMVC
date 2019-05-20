@@ -18,4 +18,38 @@ public struct LoginAssembly: RootAssembly{
     public func view(model: Model) -> View {
         return LoginViewImpl(model: model)
     }
+    
+    public func user (username: String, password: String) -> User {
+        return UserClass(email: username, password: password)
+        
+    }
+}
+
+extension LoginAssembly {
+    class UserClass: User {
+        var email: String {
+            didSet {self.send() }
+        }
+        
+        var password: String{
+            didSet {self.send() }
+        }
+        
+        var name: String?{
+            didSet {self.send() }
+        }
+        
+        var eventHandler: EventHandler<User>?
+        
+        init(email: String, password: String) {
+            self.email = email
+            self.password = password
+        }
+        
+        private func send() {
+            self.eventHandler?(self)
+        }
+        
+        
+    }
 }
