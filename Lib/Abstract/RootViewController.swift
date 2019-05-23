@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class RootViewController <Model, View, Assembly>: UIViewController, RootViewGettable
+open class RootViewController <Model, View, Assembly>: UIViewController, RootViewGettable
     where
     Model: LibMVC.RootModel,
     Assembly: LibMVC.RootAssembly, // ??? без нього відео працює
@@ -32,7 +32,7 @@ public class RootViewController <Model, View, Assembly>: UIViewController, RootV
     public var assembly: Model.Assembly {
         return self.model.assembly
     }
-    public override var viewIfLoaded: UIView? {
+    open override var viewIfLoaded: UIView? {
             return self.view
     }
     

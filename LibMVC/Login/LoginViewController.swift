@@ -9,9 +9,18 @@
 import UIKit
 import LibMVC
 //public class LoginViewController: RootViewController <LoginModel, LoginView, LoginAssembly> {
-    
+
+public enum LoginViewControllerEvent {
+    case didLogin(User?)
+    case didRequestRegister
+}
 
 public class LoginViewController: RootViewController <LoginModel, LoginView, LoginAssembly> {
+    
+    // MARK: -
+    // MARK: Properties
+    
+    var eventHandler: EventHandler<LoginViewControllerEvent>?
     
     // MARK: -
     // MARK: Open
@@ -33,10 +42,21 @@ public class LoginViewController: RootViewController <LoginModel, LoginView, Log
     }
     
     public func login() {
-        self.rootView?.setLoading(true, animated: true)
-        self.model.update {
-            self.rootView?.setLoading(false, animated: true)
-            
+        let setLoading: (Bool) -> Void = {
+            self.rootView?.setLoading($0, animated: true)
         }
+        
+        setLoading(true)
+        self.model.update { user, success in
+            setLoading(false)
+            self.eventHandler?(.didLogin(user))
+            if !success {
+                self.presentError()
+            }
+        }
+    }
+    // Розділяє навігацію від цього контролера (наприклад навігаційний контролер, координатор), який може створювати контролер реєстрації? а якщо користувач залогінився - викинув контролер реєстрації щоб повернувся користувач у вікно логіна
+    public func presentError(){
+        
     }
 }

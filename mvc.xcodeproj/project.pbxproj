@@ -236,7 +236,6 @@
 		F5609E12228FFDE30010E86E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F5C55141227EB76300CC7EF6 /* Main.storyboard */,
 				F5C55144227EB76800CC7EF6 /* Assets.xcassets */,
 				F5609E13228FFE1F0010E86E /* Strings.swift */,
 			);
@@ -376,6 +375,7 @@
 		F5C5513C227EB76300CC7EF6 /* mvc */ = {
 			isa = PBXGroup;
 			children = (
+				F5C55141227EB76300CC7EF6 /* Main.storyboard */,
 				F5C5513D227EB76300CC7EF6 /* AppDelegate.swift */,
 				F5C5513F227EB76300CC7EF6 /* ViewController.swift */,
 				F5609E12228FFDE30010E86E /* Resources */,

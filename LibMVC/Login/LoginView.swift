@@ -139,8 +139,8 @@ public class LoginViewImpl: RootView<LoginPresentationModel>, LoginView, LoginVi
                 $0.text = model.password
             }
         }
-        model.applyStyle(view: self)
-        model.applyLoyaut(view: self)
+        model.style(self)
+        model.layout(self)
     }
     
     // MARK: -
